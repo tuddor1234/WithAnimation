@@ -11,8 +11,9 @@ namespace WithAnimation
     {
         public string url;
         public PictureBox image;
+        public PictureBox bigPicture;
         public Label nameLabel;
-
+        public int index;
 
         public Preview(string s)
         {
@@ -21,14 +22,17 @@ namespace WithAnimation
             image.Size = new System.Drawing.Size(100, 100);
             image.BackgroundImageLayout = ImageLayout.Stretch;
             image.Load(s);
-            image.Click += new EventHandler(OnImageClicked);
+           
+            
             // image.MouseHover += new EventHandler(OnHover);
             //name.Text =;
         }
 
-        public void OnImageClicked(Object sender,EventArgs e)
+       
+
+        public int returnIndex()
         {
-              //   Form.ActiveForm.getC
+            return index;
         }
         
 

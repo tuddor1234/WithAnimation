@@ -17,6 +17,14 @@ namespace WithAnimation
         List<string> imagesList = new List<string>();
         List<string> videosList = new List<string>();
         List<string> musicList = new List<string>();
+
+       // List<PictureBox> imagesPreview = new List<PictureBox>();
+
+        List<Preview> imagesPreview;
+        List<Preview> videosPreview;
+        List<Preview> musicPreview;
+
+
         int index=0;
         bool isPhotoPanel = false;
         bool selPanelVisible = false;
@@ -33,14 +41,39 @@ namespace WithAnimation
             videosPath = packsPath + @"Videos\";
             musicPath = packsPath + @"Music\";
             imagesList.AddRange(Directory.GetFiles(photosPath));
+           // videosList.AddRange(Directory.GetFiles(videosPath));
+
             //SETUP PANELS
             photosPanel.Location = new Point(photosPanel.Location.X, -3*photosPanel.Height - 5);
 
             selectedPanel.BackColor = Color.Transparent;
+            //Setup every Item
+            for (int i = 0; i < imagesList.Capacity; i++)
+            {
+                WAIT(0.5f);
+                PreviewPhoto(imagesList[i], i);
+            }
+        }
+
+        public void PreviewPhoto(string s, int i)
+        {
+            Preview preview = new Preview(s);
+            preview.bigPicture = bigPicture;
+            preview.index = i;
+            preview.image.Click += new EventHandler(OnImageClicked);
+            flowLayoutPanel1.Controls.Add(preview.image);
+
+            // preview  
 
         }
 
-      
+        public void PreviewVideo(string s)
+        {
+
+        }
+
+
+
 
         private void QuitButton_Click(object sender, EventArgs e)
         {
@@ -109,30 +142,12 @@ namespace WithAnimation
                 photosPanel.Location = new Point(flowLayoutPanel1.Width + 4, 4);
                 
                 flowLayoutPanel1.SetBounds(1, 1, flowLayoutPanel1.Width - 5, flowLayoutPanel1.Height - 5);
-                for(int i=0;i<imagesList.Capacity; i++)
-                {
-                    WAIT(0.5f);
-                    PreviewPhoto(imagesList[i],i);
-                }
+               
+                
             }
         }
 
-       public void PreviewPhoto(string s,int i)
-        {
-            Preview preview = new Preview(s);
-            preview.bigPicture = bigPicture;
-            preview.index = i;
-            preview.image.Click += new EventHandler(OnImageClicked);
-            flowLayoutPanel1.Controls.Add(preview.image);
-            
-            // preview  
-          
-        }
-
-        public void PreviewVideo(string s)
-        {
-
-        }
+       
 
 
 

@@ -30,10 +30,7 @@ namespace WithAnimation
 
        
 
-        public int returnIndex()
-        {
-            return index;
-        }
+      
         
 
     }

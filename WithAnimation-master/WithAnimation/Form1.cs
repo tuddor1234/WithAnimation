@@ -15,8 +15,12 @@ namespace WithAnimation
     {
         string photosPath = null, videosPath = null, musicPath = null;
         List<string> imagesList = new List<string>();
+        List<string> videosList = new List<string>();
+        List<string> musicList = new List<string>();
         int index=0;
         bool isPhotoPanel = false;
+        bool selPanelVisible = false;
+
 
         public mainForm()
         {
@@ -28,6 +32,7 @@ namespace WithAnimation
             photosPath = packsPath + @"Photos\";
             videosPath = packsPath + @"Videos\";
             musicPath = packsPath + @"Music\";
+            imagesList.AddRange(Directory.GetFiles(photosPath));
             //SETUP PANELS
             photosPanel.Location = new Point(photosPanel.Location.X, -3*photosPanel.Height - 5);
 
@@ -60,32 +65,53 @@ namespace WithAnimation
         //VIDEOS BUTTON
         private void button2_Click(object sender, EventArgs e)
         {
-
+            if (selPanelVisible == false)
+            {
+                selectedPanel.BackColor = Color.WhiteSmoke;
+                selPanelVisible = true;
+            }
+            selectedPanel.Location = new Point(videosButton.Location.X, photosButton.Top - 1 - selectedPanel.Height);
+            //WAIT(1);
             flowLayoutPanel1.Controls.Clear();
             isPhotoPanel = false;
 
+          
         }
         //MUSIC BUTTON
         private void button1_Click(object sender, EventArgs e)
         {
+            if (selPanelVisible == false)
+            {
+                selectedPanel.BackColor = Color.WhiteSmoke;
+                selPanelVisible = true;
+            }
+            selectedPanel.Location = new Point(musicButton.Location.X, photosButton.Top - 1 - selectedPanel.Height);
+            //WAIT(1);
+     
+            flowLayoutPanel1.Controls.Clear();
+            isPhotoPanel = false;
 
-        }
+              }
         //PHOTOS BUTTON
         private void photosButton_Click(object sender, EventArgs e)
         {
             if (!isPhotoPanel)
             {
-                selectedPanel.BackColor = Color.WhiteSmoke;
-                selectedPanel.Location = new Point (photosButton.Location.X,photosButton.Top);
-
+                if (selPanelVisible == false)
+                {
+                    selectedPanel.BackColor = Color.WhiteSmoke;
+                    selPanelVisible = true;
+                }
+                selectedPanel.Location = new Point(photosButton.Location.X, photosButton.Top - 1 - selectedPanel.Height);
+               // WAIT(1f);
                 isPhotoPanel = true;
                 flowLayoutPanel1.Controls.Clear();
                 photosPanel.Location = new Point(flowLayoutPanel1.Width + 4, 4);
-                imagesList.AddRange( Directory.GetFiles(photosPath));
+                
                 flowLayoutPanel1.SetBounds(1, 1, flowLayoutPanel1.Width - 5, flowLayoutPanel1.Height - 5);
                 for(int i=0;i<imagesList.Capacity; i++)
                 {
-                    
+                    WAIT(0.5f);
                     PreviewPhoto(imagesList[i],i);
                 }
             }
@@ -98,10 +124,17 @@ namespace WithAnimation
             preview.index = i;
             preview.image.Click += new EventHandler(OnImageClicked);
             flowLayoutPanel1.Controls.Add(preview.image);
-            WAIT(0.2f);
+            
             // preview  
-           
+          
         }
+
+        public void PreviewVideo(string s)
+        {
+
+        }
+
+
 
         public void OnImageClicked(Object sender, EventArgs e)
         {

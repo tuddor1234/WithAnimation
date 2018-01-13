@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainForm));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.selectedPanel = new System.Windows.Forms.Panel();
             this.photosPanel = new System.Windows.Forms.Panel();
             this.nextButton = new System.Windows.Forms.Button();
             this.prevButton = new System.Windows.Forms.Button();
@@ -38,11 +39,11 @@
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.videosButton = new System.Windows.Forms.Button();
-            this.soundsButton = new System.Windows.Forms.Button();
+            this.musicButton = new System.Windows.Forms.Button();
             this.QuitButton = new System.Windows.Forms.Button();
             this.photosButton = new System.Windows.Forms.Button();
             this.timer = new System.Windows.Forms.Timer(this.components);
-            this.selectedPanel = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.photosPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bigPicture)).BeginInit();
@@ -56,7 +57,6 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.AutoSize = true;
             this.panel1.BackColor = System.Drawing.Color.Transparent;
-            this.panel1.Controls.Add(this.selectedPanel);
             this.panel1.Controls.Add(this.photosPanel);
             this.panel1.Controls.Add(this.flowLayoutPanel1);
             this.panel1.Controls.Add(this.panel2);
@@ -65,19 +65,26 @@
             this.panel1.Size = new System.Drawing.Size(671, 484);
             this.panel1.TabIndex = 0;
             // 
+            // selectedPanel
+            // 
+            this.selectedPanel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.selectedPanel.BackColor = System.Drawing.Color.AliceBlue;
+            this.selectedPanel.Location = new System.Drawing.Point(3, 3);
+            this.selectedPanel.Name = "selectedPanel";
+            this.selectedPanel.Size = new System.Drawing.Size(85, 10);
+            this.selectedPanel.TabIndex = 4;
+            // 
             // photosPanel
             // 
             this.photosPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.photosPanel.BackColor = System.Drawing.Color.Transparent;
-            this.photosPanel.Controls.Add(this.nextButton);
-            this.photosPanel.Controls.Add(this.prevButton);
             this.photosPanel.Controls.Add(this.bigPicture);
             this.photosPanel.Enabled = false;
             this.photosPanel.Location = new System.Drawing.Point(277, 4);
             this.photosPanel.Name = "photosPanel";
-            this.photosPanel.Size = new System.Drawing.Size(391, 386);
+            this.photosPanel.Size = new System.Drawing.Size(391, 321);
             this.photosPanel.TabIndex = 3;
             // 
             // nextButton
@@ -88,7 +95,7 @@
             this.nextButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.nextButton.Cursor = System.Windows.Forms.Cursors.Cross;
             this.nextButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.nextButton.Location = new System.Drawing.Point(199, 333);
+            this.nextButton.Location = new System.Drawing.Point(462, 37);
             this.nextButton.Name = "nextButton";
             this.nextButton.Size = new System.Drawing.Size(50, 50);
             this.nextButton.TabIndex = 2;
@@ -104,7 +111,7 @@
             this.prevButton.Cursor = System.Windows.Forms.Cursors.Cross;
             this.prevButton.FlatAppearance.BorderSize = 0;
             this.prevButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.prevButton.Location = new System.Drawing.Point(120, 333);
+            this.prevButton.Location = new System.Drawing.Point(350, 37);
             this.prevButton.Name = "prevButton";
             this.prevButton.Size = new System.Drawing.Size(50, 50);
             this.prevButton.TabIndex = 1;
@@ -120,7 +127,7 @@
             this.bigPicture.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bigPicture.Location = new System.Drawing.Point(3, 0);
             this.bigPicture.Name = "bigPicture";
-            this.bigPicture.Size = new System.Drawing.Size(385, 322);
+            this.bigPicture.Size = new System.Drawing.Size(385, 318);
             this.bigPicture.TabIndex = 0;
             this.bigPicture.TabStop = false;
             // 
@@ -143,13 +150,17 @@
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.Transparent;
+            this.panel2.Controls.Add(this.selectedPanel);
+            this.panel2.Controls.Add(this.button1);
+            this.panel2.Controls.Add(this.nextButton);
             this.panel2.Controls.Add(this.videosButton);
-            this.panel2.Controls.Add(this.soundsButton);
+            this.panel2.Controls.Add(this.prevButton);
+            this.panel2.Controls.Add(this.musicButton);
             this.panel2.Controls.Add(this.QuitButton);
             this.panel2.Controls.Add(this.photosButton);
-            this.panel2.Location = new System.Drawing.Point(1, 393);
+            this.panel2.Location = new System.Drawing.Point(1, 377);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(670, 88);
+            this.panel2.Size = new System.Drawing.Size(670, 104);
             this.panel2.TabIndex = 2;
             // 
             // videosButton
@@ -161,28 +172,28 @@
             this.videosButton.Cursor = System.Windows.Forms.Cursors.Cross;
             this.videosButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.videosButton.ForeColor = System.Drawing.Color.Black;
-            this.videosButton.Location = new System.Drawing.Point(94, 3);
+            this.videosButton.Location = new System.Drawing.Point(94, 19);
             this.videosButton.Name = "videosButton";
             this.videosButton.Size = new System.Drawing.Size(85, 85);
             this.videosButton.TabIndex = 5;
             this.videosButton.UseVisualStyleBackColor = true;
             this.videosButton.Click += new System.EventHandler(this.button2_Click);
             // 
-            // soundsButton
+            // musicButton
             // 
-            this.soundsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.soundsButton.AutoSize = true;
-            this.soundsButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("soundsButton.BackgroundImage")));
-            this.soundsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.soundsButton.Cursor = System.Windows.Forms.Cursors.Cross;
-            this.soundsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.soundsButton.ForeColor = System.Drawing.Color.Black;
-            this.soundsButton.Location = new System.Drawing.Point(185, 2);
-            this.soundsButton.Name = "soundsButton";
-            this.soundsButton.Size = new System.Drawing.Size(85, 85);
-            this.soundsButton.TabIndex = 4;
-            this.soundsButton.UseVisualStyleBackColor = true;
-            this.soundsButton.Click += new System.EventHandler(this.button1_Click);
+            this.musicButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.musicButton.AutoSize = true;
+            this.musicButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("musicButton.BackgroundImage")));
+            this.musicButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.musicButton.Cursor = System.Windows.Forms.Cursors.Cross;
+            this.musicButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.musicButton.ForeColor = System.Drawing.Color.Black;
+            this.musicButton.Location = new System.Drawing.Point(185, 18);
+            this.musicButton.Name = "musicButton";
+            this.musicButton.Size = new System.Drawing.Size(85, 85);
+            this.musicButton.TabIndex = 4;
+            this.musicButton.UseVisualStyleBackColor = true;
+            this.musicButton.Click += new System.EventHandler(this.button1_Click);
             // 
             // QuitButton
             // 
@@ -191,7 +202,7 @@
             this.QuitButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.QuitButton.Cursor = System.Windows.Forms.Cursors.Cross;
             this.QuitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.QuitButton.Location = new System.Drawing.Point(582, 2);
+            this.QuitButton.Location = new System.Drawing.Point(582, 18);
             this.QuitButton.Name = "QuitButton";
             this.QuitButton.Size = new System.Drawing.Size(85, 85);
             this.QuitButton.TabIndex = 3;
@@ -209,21 +220,27 @@
             this.photosButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.photosButton.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.photosButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.photosButton.Location = new System.Drawing.Point(3, 2);
+            this.photosButton.Location = new System.Drawing.Point(3, 18);
             this.photosButton.Name = "photosButton";
             this.photosButton.Size = new System.Drawing.Size(85, 85);
             this.photosButton.TabIndex = 0;
             this.photosButton.UseVisualStyleBackColor = true;
             this.photosButton.Click += new System.EventHandler(this.photosButton_Click);
             // 
-            // selectedPanel
+            // button1
             // 
-            this.selectedPanel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.selectedPanel.BackColor = System.Drawing.Color.AliceBlue;
-            this.selectedPanel.Location = new System.Drawing.Point(4, 377);
-            this.selectedPanel.Name = "selectedPanel";
-            this.selectedPanel.Size = new System.Drawing.Size(85, 10);
-            this.selectedPanel.TabIndex = 4;
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.button1.BackColor = System.Drawing.Color.Transparent;
+            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button1.Cursor = System.Windows.Forms.Cursors.Cross;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(406, 36);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(50, 50);
+            this.button1.TabIndex = 6;
+            this.button1.UseVisualStyleBackColor = false;
             // 
             // mainForm
             // 
@@ -258,13 +275,14 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button QuitButton;
         private System.Windows.Forms.Button videosButton;
-        private System.Windows.Forms.Button soundsButton;
+        private System.Windows.Forms.Button musicButton;
         private System.Windows.Forms.Panel photosPanel;
         private System.Windows.Forms.Button nextButton;
         private System.Windows.Forms.Button prevButton;
         public System.Windows.Forms.PictureBox bigPicture;
         private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.Panel selectedPanel;
+        private System.Windows.Forms.Button button1;
     }
 }
 
